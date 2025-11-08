@@ -76,7 +76,7 @@ void asymmetricMenu()
     {
 
         int action;
-        cout << "1.Key Generation\n 2.Encrypt\n3. Decrypt\nEnter action: ";
+        cout << "1.Key Generation\n 2.Encrypt and Sign\n3. Decrypt ans Verify\nEnter action: ";
         cin >> action;
         if (action == 1)
         {

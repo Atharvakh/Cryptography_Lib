@@ -1,4 +1,5 @@
 #include "symmetric.h"
+#include "../protocol/KeyGenerator.h"
 #include <fstream>
 #include <random>
 #include <iostream>
@@ -7,10 +8,7 @@ using namespace NTL;
 /* --- CaesarCipher --- */
 void CaesarCipher::encrypt()
 {
-    int shift;
-    cout << "Enter shift: ";
-    cin >> shift;
-    shift = shift % 26;
+    long shift = KeyGenerator::generateDHKey("caesar.key");
 
     string message;
     cout << "Enter Your Message: ";
@@ -39,11 +37,8 @@ void CaesarCipher::encrypt()
 
 void CaesarCipher::decrypt()
 {
-    int shift;
-    cout << "Enter shift: ";
-    cin >> shift;
-    shift = shift % 26;
-
+    long shift = KeyGenerator::readKey("caesar.key");
+    remove("caesar.key");
     string message;
     cout << "Enter Your Encrypted Message: ";
     cin.ignore(); // clear buffer
